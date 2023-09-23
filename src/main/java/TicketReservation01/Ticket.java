@@ -1,4 +1,4 @@
-package TicketReservation;
+package TicketReservation01;
 
 public class Ticket {
     //mesafe(km) , Secilen koltugun numarasi, yolculuk tipi yön
