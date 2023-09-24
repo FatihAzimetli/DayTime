@@ -30,38 +30,55 @@ Project: Bir siteye üye olma ve giriş yapma sayfası tasarlayınız.
  */
 import java.util.Scanner;
 
+import java.util.Scanner;
+import java.util.SortedMap;
+
 public class LoginPageApp {
     public static void main(String[] args) {
+
         start();
+        //0-tüm userların ortak öz. tutucağımız User classı oluşturalım.
+        //0-userla ilgili işlemler için UserService classını oluşturalım.
+
+
     }
-
+    //1-start metodu
     private static void start() {
-        Scanner input = new Scanner(System.in);
-        UserService service = new UserService();
+        Scanner inp=new Scanner(System.in);
+        //service objesi oluşturalım.
+        UserService service=new UserService();
+        //menü gösterelim.
         int select;
-
         do {
-            System.out.println("=== TechProu Education ===");
-            System.out.println("1 - Üye Olunuz");
-            System.out.println("2 - Giriş yap");
-            System.out.println("0 - Çıkış yap");
-            System.out.println("Seçiminiz: ");
-            select = input.nextInt();
+            System.out.println("=== TECHPROEDUCATION ===");
+            System.out.println("1- üye ol");
+            System.out.println("2- giriş yap");
+            System.out.println("0- ÇIKIŞ");
+            System.out.println("Seçiminiz : ");
+            select=inp.nextInt();// \n
+            inp.nextLine();
 
-            switch (select) {
+            switch (select){
                 case 1:
                     service.register();
+                    //test: için userları görelim
+                    System.out.println(service.emails);
+                    System.out.println(service.passwords);
                     break;
                 case 2:
                     service.login();
                     break;
                 case 0:
-                    System.out.println("İyi günler dileriz");
+                    System.out.println("İyi günler dileriz...");
                     break;
                 default:
-                    System.out.println("Hatalı giriş");
+                    System.out.println("Hatalı giriş, tekrar deneyiniz!!!");
                     break;
             }
-        } while (select != 0);
+
+        }while (select!=0);
+
     }
+
+
 }
