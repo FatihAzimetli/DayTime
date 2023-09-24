@@ -40,64 +40,105 @@ import java.util.Scanner;
 
 
 
-public class RestaurantBillGenerator {
+class RestaurantCafeBillGenerator {
 
     public static void main(String[] args) {
 
-        getSelectionMenu();
+        start();
 
     }
-    //1-işlem seçim menüsünü gösterelim
-    public static void getSelectionMenu(){
+
+    public static void start(){
         Scanner inp=new Scanner(System.in);
-        //3-yiyecekler için Class oluşturalım:Dish
-
-        //7-servis objelerini oluşturalım
-        DishService dishService=new DishService();//listeye yemekler eklendi
         OrderService orderService=new OrderService();
-
-
-
-
-        //2-tekrar tekrar menüyü gösterelim
-        int select=-1;
-        while (select!=0){
-            System.out.println("-----------------------------------------------");
-            System.out.println(" *** Lezzet Restaurant Sipariş Uygulaması *** ");
-            System.out.println("1-Menü");
-            System.out.println("2-Sipariş Gir");
-            System.out.println("3-Sipariş İptal");
-            System.out.println("4-Hesap Oluştur");
-            System.out.println("0-ÇIKIŞ");
-            System.out.println("Seçiminiz : ");
-            select=inp.nextInt();
-            System.out.println("------------------------------------------------");
-
-            switch (select){
+        DishService dishService;
+        int option;
+        do {
+            option=getOption(inp);//1,2,0
+            switch (option){
                 case 1:
-                    dishService.showMenu();
+                    dishService=new DishService();//restaurantdaki yemekler
                     break;
                 case 2:
-                    //sipariş gir
-                    orderService.createOrder(dishService);
-                    break;
-                case 3:
-                    //sipariş iptal
-                    orderService.deleteOrder();
-                    break;
-                case 4:
-                    //hesap oluşturalım
-                    orderService.printBill();
+                    dishService=new CafeDishService();//cafeDishServicedeki filldishlist
                     break;
                 case 0:
-                    System.out.println("İyi günler dileriz.");
+                    System.out.println("Sistemden çıkış yapıldı.");
+                    dishService=null;
                     break;
                 default:
-                    System.out.println("Hatalı giriş!");
+                    System.out.println("Hatalı giriş");
+                    dishService=null;
                     break;
             }
+            getSelectionMenu(dishService,orderService);
+        }while (option!=0);
 
+
+    }
+
+    public static int getOption(Scanner scan){
+        System.out.println("Merhaba, ");
+        System.out.println("1-Restaurant");
+        System.out.println("2-Kafeterya");
+        System.out.println("0-ÇIKIŞ");
+        System.out.println("Seçiminiz : ");
+        return scan.nextInt();
+    }
+
+
+
+
+    public static void getSelectionMenu(DishService dishService,OrderService orderService){
+        Scanner inp=new Scanner(System.in);
+
+        if (dishService!=null){
+
+            int select=-1;
+            while (select!=0){
+                System.out.println("-----------------------------------------------");
+                System.out.println(" *** Lezzet Restaurant ve Cafe Sipariş Uygulaması *** ");
+                System.out.println("1-Menü");
+                System.out.println("2-Sipariş Gir");
+                System.out.println("3-Sipariş İptal");
+                System.out.println("4-Hesap Oluştur");
+                System.out.println("5-Sipariş Teslim ve İptal");
+                System.out.println("0-ÇIKIŞ");
+                System.out.println("Seçiminiz : ");
+                select=inp.nextInt();
+                System.out.println("------------------------------------------------");
+
+                switch (select){
+                    case 1:
+                        dishService.showMenu();
+                        break;
+                    case 2:
+                        //sipariş gir
+                        orderService.createOrder(dishService);
+                        break;
+                    case 3:
+                        //sipariş iptal
+                        orderService.deleteOrder();
+                        break;
+                    case 4:
+                        //hesap oluşturalım
+                        orderService.printBill();
+                        break;
+                    case 5:
+                        // Sipariş teslim etme ve kaldırma
+                        OrderDeliveryService.deliverOrder(orderService.orderList);
+                        break;
+                    case 0:
+                        System.out.println("İyi günler dileriz.");
+                        break;
+                    default:
+                        System.out.println("Hatalı giriş!");
+                        break;
+                }
+
+            }
         }
+
 
     }
 

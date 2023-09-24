@@ -1,4 +1,5 @@
 package RestaurantBillGenerator;
+
 public class Order {
 
     private static int count=999;//1000

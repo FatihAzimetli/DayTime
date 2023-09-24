@@ -8,14 +8,14 @@ public class DishService {
 
         //5-yiyecekleri bir listeye koyalım
 
-    private List<Dish> dishList=new ArrayList<>();
+    public List<Dish> dishList=new ArrayList<>();
 
     //5-a-yiyecekleri oluşturup listeye ekleme
     public DishService(){
         fillDishList();
     }
 
-    private void fillDishList() {
+    public void fillDishList() {
         Dish dish1=new Dish(100,"Adana Kebabı",250.99);
         Dish dish2=new Dish(101,"Urfa Kebabı",200.0);
         Dish dish3=new Dish(102,"Çökertme Kebabı",200.0);
