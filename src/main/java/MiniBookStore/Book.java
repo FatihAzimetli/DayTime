@@ -17,7 +17,7 @@ public class Book extends Product{
         this.isbn=isbn;
     }
 
-        //getter-setter
+        //getter-setter fatih@Fatih
 
 
     public String getAuthorName() {
