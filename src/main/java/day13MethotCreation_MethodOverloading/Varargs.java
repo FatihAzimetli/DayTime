@@ -7,6 +7,9 @@ public class Varargs {
         int result = toplamaYap(5,6,7,8,9,10);
         System.out.println(result);
 
+
+
+
     }
 
     public static int toplamaYap(int... a) {
@@ -37,6 +40,19 @@ public class Varargs {
 //    public static int toplamaYap(int a, int b, int c, int d) {
 //        return a + b + c + d;
 //    }
+
+
+
+
+
+
+
+
+
+    //Bu örnekte, iki farklı varargs kullanılarak hem string hem de int türünde değişken sayıda parametre alınabilmektedir.
+
+
+
 
 
 

@@ -14,8 +14,8 @@ public class C01MetodCration01 {
         int sonuc = ilkIkiSayiyiCarpSonSayiyiTopla(2,3,4);
         System.out.println(sonuc);
         //Ornek 3: Girilen bir kelimeyi ekrana yazdiran bir method olusturup kullaniniz.
-        String kelime = "Mehmet";
-        System.out.println(kelime);
+        print("Laila Mancura");
+
 
         //Girlin bir String kelimeden sonra,  iki int sayi carpiniz ve arkasina baska bir kelime yazdirin  medot üretip ekrana yazdirin Örnek--> "Merhaba 20 Dünya"
         String sonucYaz = birKelimeIkisSayiBirKelime("Merhaba", 4, 5, "Dünya");
@@ -40,8 +40,8 @@ public class C01MetodCration01 {
     }
 
     //Ornek 3: Girilen bir kelimeyi ekrana yazdiran bir method olusturup kullaniniz.
-    public static String kelime (String kelime) {
-        return kelime;
+    public static void print(String str) {
+        System.out.println(str);
     }
 
     //Girilen bir String kelime bir int sayi carpimi ve arkasina girilen baska bir kelime icin medot üretip ekrana yazdirin
