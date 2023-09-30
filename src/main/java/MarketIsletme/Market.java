@@ -6,8 +6,6 @@ import java.util.List;
 public class Market {
     private String ad;
     private String adres;
-    private String ureticiAdi;
-    private  int satisNumarasi;
     private List<Urun> urunler;
 
     public Market(String ad, String adres) {
@@ -25,6 +23,23 @@ public class Market {
         System.out.println("Market ürünleri:");
         for (Urun urun : urunler) {
             System.out.println(urun.toString());
+        }
+    }
+
+    public Urun urunBul(String urunAdi) {
+        for (Urun urun : urunler) {
+            if (urun.getAd().equalsIgnoreCase(urunAdi)) {
+                return urun;
+            }
+        }
+        return null;
+    }
+
+    public void urunSatinAl(Urun urun, int adet) {
+        if (urun != null) {
+            System.out.println(adet + " adet " + urun.getAd() + " satın alındı. Toplam tutar: " + (urun.getFiyat() * adet) + " TL");
+        } else {
+            System.out.println("Belirtilen isimde bir ürün bulunamadı. Lütfen geçerli bir ürün adı girin.");
         }
     }
 
@@ -51,7 +66,6 @@ public class Market {
     public void setUrunler(List<Urun> urunler) {
         this.urunler = urunler;
     }
-
 }
 
 
