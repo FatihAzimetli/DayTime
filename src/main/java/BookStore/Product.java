@@ -58,3 +58,5 @@ public class Product {//ürün islemleri sayfasi
         this.productStock = productStock;
     }
 }
+
+

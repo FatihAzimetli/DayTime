@@ -14,7 +14,7 @@ public class BookStoreService implements ProductService{
     // sistemin baslanginda örnek 1 adet kitap ekleriz uygulamayi test edebilmek icin
     public BookStoreService(){
         BookStore book1 = new BookStore("MaviBalik",
-                100, 3,"Kaba Baba",
+                100, 3,"Kaba Papa",
                 "Kizilboru", "as111");
         BookStore book2 = new BookStore("miniBalik",
                 50, 3,"Kaba Mama",
@@ -72,11 +72,10 @@ public class BookStoreService implements ProductService{
     @Override
     public void listProduct() {
         System.out.println("-------------------------------------------------------------------------");
-        System.out.printf("%-5s | %-20s | %-15s | %-10s | %-6s | %10-s | %6-s | \n",
+        System.out.printf("%5s | %20s | %15s | %10s | %6s | %10s | %6s | \n",
                 "ID","Kitap Adi","Yazar Adi","Yayinevi","ISBN","Birim Fiyat","Stok Bil");
         System.out.println("-------------------------------------------------------------------------");
-        this.bookStoreslist.forEach(bookStore -> System.out.printf("%-5s | %-20s " +
-                        "| %-15s | %-10s | %-6s | %10-s | %6-s | \n"
+        this.bookStoreslist.forEach(bookStore -> System.out.printf("%5s | %20s | %15s | %10s | %6s | %10s | %6s | \n"
                 ,bookStore.getProductId(),bookStore.getProductName()
                 ,bookStore.getWriterName(),bookStore.getProductId()
                 ,bookStore.getIsbnNo(),bookStore.getUnitPrice()+"Lira",
@@ -121,11 +120,49 @@ public class BookStoreService implements ProductService{
 //ürün silmeyi id ile yapacagiz.
     @Override
     public void deleteProduct() {
+        boolean isFound= true;
+        System.out.println("Kitap id :");
+        int id = input.nextInt();
+        for (BookStore bookStore: this.bookStoreslist){
+            if (bookStore.getProductId()==id){
+                this.bookStoreslist.remove(bookStore);
+                System.out.println("Ürün silindi. ");
+                isFound = true;
+                break;
+            }
+            else {
+                isFound = false;
+            }
+
+        }
+        if (!isFound){
+            System.out.println("Ürün bulunamadi");
+        }
+
+
 
     }
+    //Yayin evine göre Ürünü filtreleme
 
     @Override
     public void filterProduct(String filter) {
+        int counter =0;
+        for (BookStore bookStore: this.bookStoreslist){
+            if (bookStore.getPublisherHous().equalsIgnoreCase(filter)){
+                System.out.printf("%5s | %20s | %15s | %10s | %6s | %10s | %6s | \n"
+                        ,bookStore.getProductId(),bookStore.getProductName()
+                        ,bookStore.getWriterName(),bookStore.getProductId()
+                        ,bookStore.getIsbnNo(),bookStore.getUnitPrice()+"Lira",
+                        bookStore.getProductStock());
+                counter++;
+            }
+        }
+        if (counter==0){
+            System.out.println("Eslesen ürün bulunamadi");
+        }
 
     }
 }
+
+
+
