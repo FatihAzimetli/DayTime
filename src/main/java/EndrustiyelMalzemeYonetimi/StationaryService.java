@@ -4,20 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class MekanikService implements ProductService{
+public class StationaryService implements ProductService{
     public Scanner input = new Scanner(System.in);
-    //Mekanik Ürünleri Kaydetmek icin Liste
-    public List<Mekanik> mekanikList = new ArrayList<>();
 
-    //sistem baslangicinda örnek bir ürün koyuyorum test amacli
+    //ürünleri saklama listesi olusturma
+    public List<Stationary> stationaryList = new ArrayList<>();
 
-    public MekanikService(){
-        Mekanik mekanik1= new Mekanik("Cekici", 2,
-                "Al Kalip", "A123","Adet"
-                ,"Montaj/BodySide","DC0001M5");
-        mekanikList.add(mekanik1);
-
-
+    // baslangic icin 1 adet ürün kaydi
+    public StationaryService(){
+        Stationary stationary1 = new Stationary("Toner", 2,
+                "PalaKitasiye", "HP3456","Adet",
+                "Ofisler","T1212");
     }
     @Override
     public void processMenu() {
@@ -44,5 +41,3 @@ public class MekanikService implements ProductService{
 
     }
 }
-
-

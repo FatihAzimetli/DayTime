@@ -1,11 +1,11 @@
 package EndrustiyelMalzemeYonetimi;
 
-public class Hidrolik extends Product{
+public class Stationary extends Product{
+
     private String measuringUnit;
     private String userSection;
     private String isbnNo;
-
-    public Hidrolik(String materialName, int amountOfStock, String productName, String productCode, String measuringUnit, String userSection, String isbnNo) {
+    public Stationary(String materialName, int amountOfStock, String productName, String productCode,String measuringUnit,String userSection,String isbnNo) {
         super(materialName, amountOfStock, productName, productCode);
         this.measuringUnit = measuringUnit;
         this.userSection = userSection;
@@ -36,6 +36,3 @@ public class Hidrolik extends Product{
         this.isbnNo = isbnNo;
     }
 }
-
-
-
