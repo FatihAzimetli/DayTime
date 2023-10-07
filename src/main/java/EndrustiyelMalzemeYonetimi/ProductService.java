@@ -9,11 +9,11 @@ public interface ProductService {
     void listProducts();
 
     // Ürün ekleme
-    void addProduct(Product product);
+    void addProduct();
 
 
     // Ürünü listeden silme
-    void deleteProduct(int productId);
+    void deleteProduct();
 
 
     // Ürünleri filtreleme

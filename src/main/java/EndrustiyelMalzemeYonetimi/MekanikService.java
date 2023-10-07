@@ -21,6 +21,19 @@ public class MekanikService implements ProductService{
     }
     @Override
     public void processMenu() {
+        int choice; //secimini yap
+        do {
+            System.out.println("----------------------------------------------------");
+            System.out.println("1-Mekanik stoklari listele");
+            System.out.println("2-Stok'a Ürün ekle");
+            System.out.println("3-Stogu sil");
+            System.out.println("4-Üreticiye göre filtrele");
+            System.out.println("0- Geriye dön");
+            System.out.println("Seciminiz");
+            choice = input.nextInt();
+            input.nextLine();//Bos satira gecmemesi icin bu metod yazilir.
+
+        }while (choice != 0);//0 secmedigi sürece döngüyü tekrar et
 
     }
 
